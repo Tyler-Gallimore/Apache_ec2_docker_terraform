@@ -7,13 +7,14 @@ resource "aws_instance" "web_server" {
     user_data = <<-EOF
     #!/bin/bash
     sudo yum update -y
-    sudo yum install -y docker
+    sudo -y install firewalld
     sudo firewall-cmd --permanent --add-service=http
     sudo firewall-cmd --permanent --add-service=https
     sudo firewall-cmd --reload
+    sudo yum install -y docker
     sudo usermod -a -G docker ec2-user
-    sudo docker pull apache:latest
-    sudo docker run --name apache_web -p 80:80 -d apache
+    sudo docker pull httpd:latest
+    sudo docker run --name apache_web -p 80:80 -d httpd
     EOF
 
 

@@ -13,7 +13,7 @@ variable "ec2_instance_type" {
 variable "vpc_id" {
     description = "The ID of the AWS VPC"
     type = string
-    default = "vpc-0e91d041ce7c92c5c"
+    default = "Placeholder"
 }
 
 variable "region" {
